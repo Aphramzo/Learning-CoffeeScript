@@ -60,11 +60,12 @@
           y2: y2
         }), moveScore = _ref2.moveScore, newWords = _ref2.newWords;
         if (moveScore !== 0) {
-          console.log("You formed the following word(s):\n" + (newWords.join(', ')) + "\n");
+          console.log("You formed the following word(s):\n" + (newWords.sort().join(', ')) + "\n");
           score += moveScore;
         }
         moveCount++;
         console.log("Your score is " + score + " after " + moveCount + " moves");
+        console.log("All Words Used:\n" + (usedWords.sort().join(', ')));
         return promptForFirstTile();
       }
     };
@@ -355,9 +356,10 @@
         y2: y
       });
     }
-    if (usedWords.length !== 0) {
-      console.log("Initially used words:\n" + (usedWords.join(', ')));
-    }
+  }
+
+  if (usedWords.length !== 0) {
+    console.log("Initially used words:\n" + (usedWords.sort().join(', ')));
   }
 
   console.log("Please choose a tile in the form (x, y)");

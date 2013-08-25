@@ -36,12 +36,16 @@ promptForSecondTile = (x1,y1) ->
 			unless moveScore is 0
 				console.log """
 					You formed the following word(s):
-					#{newWords.join(', ')}
+					#{newWords.sort().join(', ')}
 					
 					"""
 				score += moveScore
 			moveCount++
 			console.log "Your score is #{score} after #{moveCount} moves"
+			console.log """
+				All Words Used:
+				#{usedWords.sort().join(', ')}
+				"""
 			promptForFirstTile()
 
 inRange = (x,y) ->	

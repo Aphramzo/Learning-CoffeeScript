@@ -36,12 +36,16 @@ promptForSecondTile = (x1,y1) ->
 			unless moveScore is 0
 				console.log """
 					You formed the following word(s):
-					#{newWords.join(', ')}
+					#{newWords.sort().join(', ')}
 					
 					"""
 				score += moveScore
 			moveCount++
 			console.log "Your score is #{score} after #{moveCount} moves"
+			console.log """
+				All Words Used:
+				#{usedWords.sort().join(', ')}
+				"""
 			promptForFirstTile()
 
 inRange = (x,y) ->	
@@ -191,14 +195,15 @@ wordsThroughTile = (grid, x,y) ->
 	
 
 console.log 'Welcome to the 5x5!'
-for x in [0...GRIDSIZE]
+for x in [0...GRIDSIZE]								#look through the initialized grid and see what words exist
 	for y in [0...GRIDSIZE]
 		scoreMove grid, {x1:x, x2:x, y1:y, y2:y}
-	unless usedWords.length is 0
-		console.log """
-			Initially used words:
-			#{usedWords.join ', ' }
-		"""
+		
+unless usedWords.length is 0						#if there were existing words display them 
+	console.log """
+		Initially used words:
+		#{usedWords.sort().join ', ' }
+	"""
 
 console.log "Please choose a tile in the form (x, y)"
 
